@@ -11,9 +11,7 @@ class BotLogic {
                     case "/help":
                         return BotUtility.getHelpMessage();
                     case "/fetch":
-                        return "Следующий трамвай приедет на \"Оперный\" через " +
-                                TramFetching.getTram() +
-                                " минут";
+                        return TramFetching.getTramString(TramFetching.getTram("http://m.ettu.ru/station/3417", new String[] {"13", "15"}));
                     default:
                         return "Я ничего не понимаю, пожлауйтса вызови помощь на /help";
                 }
