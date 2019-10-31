@@ -22,7 +22,7 @@ fun GetTramArrivalTime(tramNumer: Int): String {
     val tramNumbers = (b.map { it.value }).toList();
     val tramTimes = (a.map { it.value }).toList();
     var tramArrival: String;
-    val indexOfTram = tramNumbers.indexOf("<b>"+tramNumer+"</b>");
+    val indexOfTram = tramNumbers.indexOf("<b>"+tramNumber+"</b>");
     if (tramTimes.size == 0) {
         tramArrival = "Видимо не стоит ждать трамвая.";
     } else if (indexOfTram > -1) {
