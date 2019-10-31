@@ -32,7 +32,6 @@ fun GetTramArrivalTime(tramNumer: Int): String {
     }
 
     return tramArrival;
-
 }
 
 println(GetTramArrivalTime(7));
