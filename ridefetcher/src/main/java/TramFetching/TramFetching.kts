@@ -7,7 +7,6 @@ import kotlin.collections.*;
 import kotlin.Array;
 
 
-
 fun GetHTML(url: String): String {
     val urlConnection = URL(url).openConnection();
     val content = urlConnection.getInputStream().bufferedReader().readText();
@@ -23,7 +22,7 @@ fun GetTramArrivalTime(tramNumer: Int): String {
     val tramNumbers = (b.map { it.value }).toList();
     val tramTimes = (a.map { it.value }).toList();
     var tramArrival: String;
-    val indexOfTram = tramNumbers.indexOf("<b>"+tramNumer+"</b>");
+    val indexOfTram = tramNumbers.indexOf("<b>"+tramNumber+"</b>");
     if (tramTimes.size == 0) {
         tramArrival = "Видимо не стоит ждать трамвая.";
     } else if (indexOfTram > -1) {
@@ -33,7 +32,6 @@ fun GetTramArrivalTime(tramNumer: Int): String {
     }
 
     return tramArrival;
-
 }
 
 println(GetTramArrivalTime(7));
