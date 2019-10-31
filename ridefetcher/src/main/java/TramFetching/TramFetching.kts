@@ -7,7 +7,6 @@ import kotlin.collections.*;
 import kotlin.Array;
 
 
-
 fun GetHTML(url: String): String {
     val urlConnection = URL(url).openConnection();
     val content = urlConnection.getInputStream().bufferedReader().readText();
