@@ -40,7 +40,7 @@ public class TramFetching {
                 }
             }
         }
-        if (response.size()!=0) {response.put("last", allTimes.get(tramNumbers.length - 1));}
+        response.put("last", allTimes.get(tramNumbers.length - 1));
         return response;
     }
 
