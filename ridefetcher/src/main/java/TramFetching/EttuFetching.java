@@ -53,13 +53,13 @@ public class EttuFetching {
                 responseString.append("Мы не можем подключиться к сайту трамвайно-троллейбусного управления :(");
                 return responseString.toString();
             }
-            responseString.append("Мы не знаем когда точно приедет ваш трамвай, но не раньше чем через "
+            responseString.append("Не понятно когда точно приедет твой трамвай, но не раньше чем через "
                     + response.get("last"));
         } else if (response.size() > 1) {
             response.remove("last");
+            responseString.append("Ближайшие трамваи, которые тебе нужны:\n");
             for (String elem : response.keySet()) {
-                responseString.append("Следующий " + elem + " трамвай приедет через "
-                        + response.get(elem) + " минут.\n");
+                responseString.append("    " + elem + " - через " + response.get(elem) + " минут.\n");
             }
         } else if (response.size() == 0) {
             responseString.append("Похоже что сейчас трамваи не ходят :(");
