@@ -9,14 +9,22 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 
+
 public class EttuFetching {
-    public static Map<String, String> getTram(String url, String[] tramNumber) {
-        Map<String, String> response = new HashMap<String,String>();
-        Document html = null;
+
+    public static Document getHtmlDoc(String url) {
         try {
-            html = Jsoup.connect(url).get();
+            Document html = Jsoup.connect(url).get();
+            return html;
         } catch (IOException e) {
             e.printStackTrace();
+            return new Document("Error");
+        }
+    }
+
+    public static Map<String, String> getTram(String[] tramNumber, Document html) {
+        Map<String, String> response = new HashMap<String,String>();
+        if (html == new Document("Error")) {
             response.put("Error", "Connection");
             return response;
         }
@@ -41,7 +49,7 @@ public class EttuFetching {
                 }
             }
         }
-        if (allTimes.size() != 0) {response.put("last", allTimes.get(tramNumbers.length - 1));}
+        if (allTimes.size() != 0) {response.put("last", allTimes.get(tramNumbers.length - 1).split(" ")[0]);}
         return response;
     }
 
@@ -54,7 +62,7 @@ public class EttuFetching {
                 return responseString.toString();
             }
             responseString.append("Не понятно когда точно приедет твой трамвай, но не раньше чем через "
-                    + response.get("last"));
+                    + response.get("last") + " минут.");
         } else if (response.size() > 1) {
             response.remove("last");
             responseString.append("Ближайшие трамваи, которые тебе нужны:\n");

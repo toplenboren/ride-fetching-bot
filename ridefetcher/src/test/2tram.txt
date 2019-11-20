@@ -1,0 +1,64 @@
+<body data-gr-c-s-loaded="true">
+    
+    <div style="max-width: 35em; margin: auto;">
+
+        <a id="gotoSite" target="_blank" style="display:none;font-size:large">Перейти на m.ettu.ru</a>
+
+        
+<h2><a href="/m/Main">    Где трамвай
+</a></h2>
+
+<p>
+    Оперный театр (на гост. Исеть, Бажова,  Дом Кино), <b> 20:16</b>
+</p>
+
+<img src="http://maps.google.com/maps/api/staticmap?sensor=false&amp;format=gif&amp;size=432x432&amp;scale=0&amp;visible=56.83918,60.61232|56.83868,60.60696|56.83745,60.59556|56.83742,60.59533|56.8364,60.58533|56.83992,60.61818&amp;markers=icon:http://chart.apis.google.com/chart%3Fchst%3Dd_map_spin%26chld%3D0.55%257C0%257CFFFF88%257C11%257Cb%257C13|56.83918,60.61232&amp;markers=icon:http://chart.apis.google.com/chart%3Fchst%3Dd_map_spin%26chld%3D0.55%257C0%257CFFFF88%257C11%257Cb%257C18|56.83868,60.60696&amp;markers=icon:http://chart.apis.google.com/chart%3Fchst%3Dd_map_spin%26chld%3D0.55%257C0%257CFFFF88%257C11%257Cb%257C7|56.83745,60.59556&amp;markers=icon:http://chart.apis.google.com/chart%3Fchst%3Dd_map_spin%26chld%3D0.55%257C0%257CFFFF88%257C11%257Cb%257C26|56.83742,60.59533&amp;markers=icon:http://chart.apis.google.com/chart%3Fchst%3Dd_map_spin%26chld%3D0.55%257C0%257CFFFF88%257C11%257Cb%257C32|56.8364,60.58533&amp;markers=size:mid|56.83992,60.61818&amp;path=color:0xff0000ff|weight:3|enc:op|yIsn~pJtAvSdAlPDbBGrANvBnB~]~Btd@XfFz@vP`@nHdA~Tt@pO^`I\lH" alt="Карта">
+
+<p>
+    </p><div>
+        <div style="width: 3em;display:inline-block;text-align:center;"><b>13</b></div> 
+        <div style="width: 4em;display:inline-block;text-align:right;">0 мин</div> 
+        <div style="width: 5em;display:inline-block;text-align:right;">367 м</div> 
+    </div>
+    <div>
+        <div style="width: 3em;display:inline-block;text-align:center;"><b>15</b></div> 
+        <div style="width: 4em;display:inline-block;text-align:right;">3 мин</div> 
+        <div style="width: 5em;display:inline-block;text-align:right;">701 м</div> 
+    </div>
+    <div>
+        <div style="width: 3em;display:inline-block;text-align:center;"><b>7</b></div> 
+        <div style="width: 4em;display:inline-block;text-align:right;">5 мин</div> 
+        <div style="width: 5em;display:inline-block;text-align:right;">1412 м</div> 
+    </div>
+    <div>
+        <div style="width: 3em;display:inline-block;text-align:center;"><b>26</b></div> 
+        <div style="width: 4em;display:inline-block;text-align:right;">5 мин</div> 
+        <div style="width: 5em;display:inline-block;text-align:right;">1426 м</div> 
+    </div>
+    <div>
+        <div style="width: 3em;display:inline-block;text-align:center;"><b>32</b></div> 
+        <div style="width: 4em;display:inline-block;text-align:right;">8 мин</div> 
+        <div style="width: 5em;display:inline-block;text-align:right;">2048 м</div> 
+    </div>
+<p></p>
+
+<div style="text-align: right;">
+    <a href="javascript:location.reload(true)">Обновить</a>
+</div>
+
+        <br>
+        <p>
+            <a href="/m/Feedback">Замечания по сервису</a>
+        </p>
+    </div>
+
+    <script type="text/javascript">
+        if (window != window.top) {
+            var link = document.getElementById('gotoSite');
+            link.href = document.location;
+            link.style.display = "block";
+        }
+    </script>
+
+
+</body>

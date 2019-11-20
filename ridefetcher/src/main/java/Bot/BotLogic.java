@@ -11,7 +11,8 @@ class BotLogic {
                     case "/help":
                         return BotUtility.getHelpMessage();
                     case "/fetch":
-                        return EttuFetching.getTramString(EttuFetching.getTram("http://m.ettu.ru/station/3417", new String[] {"13", "15"}));
+                        return EttuFetching.getTramString(EttuFetching.getTram(new String[] {"13", "15"},
+                                EttuFetching.getHtmlDoc("http://m.ettu.ru/station/3417")));
                     default:
                         return "Я ничего не понимаю, пожлауйтса вызови помощь на /help";
                 }
