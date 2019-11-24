@@ -30,7 +30,7 @@ public class EttuFetching {
         }
         Element body = html.body();
         String[] tramNumbers = body.select("b").text().split(" ");
-        String connectionTime = tramNumbers[0];
+        String connectionTime = tramNumbers[0]; //No quality assurance
         tramNumbers = Arrays.copyOfRange(tramNumbers, 1, tramNumbers.length);
         Pattern minRegex = Pattern.compile("\\d+\\sмин");
         Matcher matcher = minRegex.matcher(body.toString());
@@ -61,7 +61,7 @@ public class EttuFetching {
                 responseString.append("Мы не можем подключиться к сайту трамвайно-троллейбусного управления :(");
                 return responseString.toString();
             }
-            responseString.append("Не понятно когда точно приедет твой трамвай, но не раньше чем через "
+            responseString.append("Твой трамвай приедет не раньше, чем через "
                     + response.get("last") + " минут.");
         } else if (response.size() > 1) {
             response.remove("last");
