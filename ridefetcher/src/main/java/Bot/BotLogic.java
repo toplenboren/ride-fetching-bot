@@ -1,6 +1,6 @@
 package Bot;
 
-import TramFetching.TramFetching;
+import TramFetching.EttuFetching;
 import UserState.UserState;
 
 class BotLogic {
@@ -11,9 +11,8 @@ class BotLogic {
                     case "/help":
                         return BotUtility.getHelpMessage();
                     case "/fetch":
-                        return "Следующий трамвай приедет на \"Оперный\" через " +
-                                TramFetching.getTram() +
-                                " минут";
+                        return EttuFetching.getTramString(EttuFetching.getTram(new String[] {"13", "15"},
+                                EttuFetching.getHtmlDoc("http://m.ettu.ru/station/3417")));
                     default:
                         return "Я ничего не понимаю, пожлауйтса вызови помощь на /help";
                 }
