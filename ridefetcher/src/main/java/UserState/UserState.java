@@ -1,17 +1,19 @@
 package UserState;
 
+import java.util.Arrays;
+
 public class UserState {
 
     private String state;
-    private String startPoint;
-    private String finishPoint;
-    private int[] tramRoutes;
+    private String startPoint = "";
+    private String finishPoint = "";
+    private int[] tramRoutes = {};
 
     UserState(String state) {
         this.state = state;
     }
 
-    void setState(String newState) {
+    public void setState(String newState) {
         this.state = newState;
     }
     public String getState() {
@@ -40,6 +42,9 @@ public class UserState {
     }
 
     public String getReadableTramRoutes() {
-        return this.tramRoutes.toString();
+        if (this.tramRoutes.length == 0) {
+            return "";
+        }
+        return Arrays.toString(this.tramRoutes);
     }
 }
