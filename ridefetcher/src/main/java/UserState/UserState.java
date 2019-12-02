@@ -1,13 +1,14 @@
 package UserState;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserState {
 
     private String state;
     private String startPoint = "";
     private String finishPoint = "";
-    private int[] tramRoutes = {};
+    private List<Integer> tramRoutes = new ArrayList<>();
 
     UserState(String state) {
         this.state = state;
@@ -20,7 +21,7 @@ public class UserState {
         return this.state;
     }
 
-    void setStartPoint(String startPoint) {
+    public void setStartPoint(String startPoint) {
         this.startPoint = startPoint;
     }
 
@@ -28,7 +29,7 @@ public class UserState {
         return this.startPoint;
     }
 
-    void setFinishPoint(String finishPoint) {
+    public void setFinishPoint(String finishPoint) {
         this.finishPoint = finishPoint;
     }
 
@@ -37,14 +38,28 @@ public class UserState {
     }
 
 
-    void setTramRoutes(int[] tramRoutes) {
+    public void setTramRoutes(List<Integer> tramRoutes) {
         this.tramRoutes = tramRoutes;
     }
 
     public String getReadableTramRoutes() {
-        if (this.tramRoutes.length == 0) {
+        if (this.tramRoutes.isEmpty()) {
             return "";
         }
-        return Arrays.toString(this.tramRoutes);
+        return this.tramRoutes.toString();
+    }
+
+    public String[] getTramRoutesAsStrings() {
+        List<String> result = new ArrayList<>();
+        for (int number : this.tramRoutes) {
+            result.add(String.valueOf(number));
+        }
+        return result.toArray(new String[0]);
+    }
+
+    public boolean isReadyToFetch() {
+        return !this.startPoint.equals("") &&
+//               !this.finishPoint.equals("") &&
+                !this.tramRoutes.isEmpty();
     }
 }
