@@ -1,26 +1,14 @@
-package TramFetching;
+package Fetching;
 
-import com.google.inject.internal.asm.$ClassTooLargeException;
 import org.jsoup.Jsoup;
-import org.junit.Assert;
-import org.junit.Ignore;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
-import org.xml.sax.SAXException;
-
 import org.jsoup.nodes.Document;
-
-import javax.print.Doc;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
+import org.junit.jupiter.api.Test;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class EttuFetchingTest {
 
