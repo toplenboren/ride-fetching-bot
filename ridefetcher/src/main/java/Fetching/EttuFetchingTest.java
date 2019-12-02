@@ -1,26 +1,15 @@
-package TramFetching;
+package Fetching;
 
-import com.google.inject.internal.asm.$ClassTooLargeException;
 import org.jsoup.Jsoup;
-import org.junit.Assert;
-import org.junit.Ignore;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
-import org.xml.sax.SAXException;
-
 import org.jsoup.nodes.Document;
-
-import javax.print.Doc;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
+import org.junit.jupiter.api.Test;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class EttuFetchingTest {
 
@@ -81,7 +70,7 @@ class EttuFetchingTest {
     void buildStringWithoutNeededTrams() {
         Document doc = getDoc("0tram.txt");
         String actual = EttuFetching.getTramString(EttuFetching.getTram(new String[] {"13", "15"}, doc));
-        String expected = "Твой трамвай приедет не раньше, чем через 8 минут.";
+        String expected = "Твой трамвай приедет не раньше чем через 8 минут.";
         assertEquals(expected, actual);
     }
 
