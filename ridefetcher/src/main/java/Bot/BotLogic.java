@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 class BotLogic {
 
     private static String setAddress(String type, String input, UserState state) throws Exception {
-        int FILTERING_THRESHOLD = 2;
+        int FILTERING_THRESHOLD = 1;
         if (EttuFetchingSetup.addressIsValid(input)) {
             if (type.equals("STARTING_POINT"))
                 state.setStartPoint(input);
@@ -23,9 +23,9 @@ class BotLogic {
         } else if (input.length() < FILTERING_THRESHOLD) {
             return "Напиши начало названия своей остановки — мы дадим тебе варианты выбора";
         } else {
-            Set filteredAddresses = EttuFetchingSetup.getAllAddresses(input);
+            Set filteredAddresses = EttuFetchingSetup.getAllAddressesByFilter(input);
             if (filteredAddresses.isEmpty()) {
-                return "Мы не знаем такой остановки, попробуй, может быть в нашей регистратуре она по-другому записана";
+                return "Мы не знаем такой остановки, попробуй, может быть в нашей регистратуре она записана по-другому";
             }
             String beautyfiedAddressesSet = (String) filteredAddresses.stream().collect(Collectors.joining("\n"));
             return "Мы не знаем такой остановки. Попробуй один из этих вариантов: \n\n" + beautyfiedAddressesSet;
@@ -64,15 +64,11 @@ class BotLogic {
                     case "/show":
                         return "Твои текущие настройки: \n " +
                                 "\uD83C\uDD70 Остановка:" + state.getStartPoint() + "\n " +
-//                                "\uD83C\uDD71 Точка Б:" + state.getFinishPoint() + "\n " +
                                 "\uD83D\uDE8B Нужные трамваи: " + state.getReadableTramRoutes() + "\n " +
                                 "";
                     case "/setStart":
                         state.setState("SET_START");
                         return BotLogic.processCommand("", state);
-//                    case "/setFinish":
-//                        state.setState("SET_FINISH");
-//                        return BotLogic.processCommand("", state);
                     case "/setRoutes":
                         state.setState("SET_ROUTES");
                         return BotLogic.processCommand("", state);
@@ -82,7 +78,6 @@ class BotLogic {
                     default:
                         return "Ты находишься в режиме настройки бота: \n " +
                                 "\uD83C\uDD70 /setStart для установки пункта А \n " +
-//                                "\uD83C\uDD71 /setFinish для установки пункта B \n " +
                                 "\uD83D\uDE8B /setRoutes для установки нужных тебе трамвайных маршрутов \n " +
                                 "\uD83D\uDE49 /show для просмотра текущих настроек \n " +
                                 "⬅ /start для выхода из режима настройки \n ";
@@ -141,7 +136,7 @@ class BotLogic {
             }
             default:
                 state.setState("INIT");
-                return "Что-то пошло не так..";
+                return "Что-то пошло не так.. ";
         }
     }
 }
