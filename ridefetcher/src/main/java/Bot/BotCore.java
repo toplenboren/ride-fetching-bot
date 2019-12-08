@@ -1,5 +1,6 @@
 package Bot;
 
+import Fetching.EttuFetchingSetup;
 import UserState.UserState;
 import UserState.UserStateManager;
 import org.telegram.telegrambots.ApiContextInitializer;
@@ -13,6 +14,7 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 public class BotCore extends TelegramLongPollingBot {
 
     private UserStateManager userStates = new UserStateManager();
+    private EttuFetchingSetup databaseSync = new EttuFetchingSetup();
 
     public static void main(String[] args) {
 
@@ -40,7 +42,11 @@ public class BotCore extends TelegramLongPollingBot {
         Message msg = e.getMessage();
         String txt = msg.getText();
         UserState user = userStates.findUserState(msg.getChatId());
-        sendMsg(msg, BotLogic.processCommand(txt, user));
+        try {
+            sendMsg(msg, BotLogic.processCommand(txt, user));
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
     }
 
     @Override
