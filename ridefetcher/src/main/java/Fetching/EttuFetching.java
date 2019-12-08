@@ -40,9 +40,9 @@ public class EttuFetching {
             allTimes.add(matcher.group());
         }
         if (tramNumbers.length > 0) {
-            for (int i = 0; i < tramNumber.length; i++){
+            for (String s : tramNumber) {
                 for (int j = 0; j < tramNumbers.length; j++) {
-                    if (tramNumbers[j].equals(tramNumber[i])) {
+                    if (tramNumbers[j].equals(s)) {
                         if (!response.containsKey(tramNumbers[j])) {
                             response.put(tramNumbers[j], allTimes.get(j).split(" ")[0]);
                         }
@@ -58,17 +58,16 @@ public class EttuFetching {
     public static String getTramString(Map<String, String> response) {
         StringBuilder responseString = new StringBuilder();
         if (response.size() == 1) {
-            if (response.get("Error") == "Connection") {
+            if (response.get("Error").equals("Connection")) {
                 responseString.append("Мы не можем подключиться к сайту трамвайно-троллейбусного управления :(");
                 return responseString.toString();
             }
-            responseString.append("Твой трамвай приедет не раньше, чем через "
-                    + response.get("last") + " минут.");
+            responseString.append("Твой трамвай приедет не раньше, чем через ").append(response.get("last")).append(" минут.");
         } else if (response.size() > 1) {
             response.remove("last");
             responseString.append("Ближайшие трамваи, которые тебе нужны:\n");
             for (String elem : response.keySet()) {
-                responseString.append("    " + elem + " - через " + response.get(elem) + " минут.\n");
+                responseString.append("    ").append(elem).append(" - через ").append(response.get(elem)).append(" минут.\n");
             }
         } else if (response.size() == 0) {
             responseString.append("Похоже что сейчас трамваи не ходят :(");

@@ -70,7 +70,7 @@ class EttuFetchingTest {
     void buildStringWithoutNeededTrams() {
         Document doc = getDoc("0tram.txt");
         String actual = EttuFetching.getTramString(EttuFetching.getTram(new String[] {"13", "15"}, doc));
-        String expected = "Твой трамвай приедет не раньше чем через 8 минут.";
+        String expected = "Твой трамвай приедет не раньше, чем через 8 минут.";
         assertEquals(expected, actual);
     }
 
