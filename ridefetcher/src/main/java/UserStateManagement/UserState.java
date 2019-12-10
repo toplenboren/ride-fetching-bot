@@ -1,4 +1,6 @@
-package UserState;
+package UserStateManagement;
+
+import jodd.json.JsonSerializer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,8 +9,11 @@ public class UserState {
 
     private String state;
     private String startPoint = "";
-    private String finishPoint = "";
     private List<Integer> tramRoutes = new ArrayList<>();
+
+    UserState() {
+        this.state = "INIT";
+    }
 
     UserState(String state) {
         this.state = state;
@@ -17,6 +22,7 @@ public class UserState {
     public void setState(String newState) {
         this.state = newState;
     }
+
     public String getState() {
         return this.state;
     }
@@ -29,27 +35,22 @@ public class UserState {
         return this.startPoint;
     }
 
-    public void setFinishPoint(String finishPoint) {
-        this.finishPoint = finishPoint;
-    }
-
-    public String getFinishPoint() {
-        return this.finishPoint;
-    }
-
-
     public void setTramRoutes(List<Integer> tramRoutes) {
         this.tramRoutes = tramRoutes;
     }
 
-    public String getReadableTramRoutes() {
+    public List<Integer> getTramRoutes() {
+        return this.tramRoutes;
+    }
+
+    public String viewReadableTramRoutes() {
         if (this.tramRoutes.isEmpty()) {
             return "";
         }
         return this.tramRoutes.toString();
     }
 
-    public String[] getTramRoutesAsStrings() {
+    public String[] viewTramRoutesAsStrings() {
         List<String> result = new ArrayList<>();
         for (int number : this.tramRoutes) {
             result.add(String.valueOf(number));
@@ -59,7 +60,10 @@ public class UserState {
 
     public boolean isReadyToFetch() {
         return !this.startPoint.equals("") &&
-//               !this.finishPoint.equals("") &&
                 !this.tramRoutes.isEmpty();
+    }
+
+    public String serialize() {
+        return JsonSerializer.create().deep(true).serialize(this);
     }
 }

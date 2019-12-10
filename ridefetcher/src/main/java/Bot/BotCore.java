@@ -1,8 +1,7 @@
 package Bot;
 
 import Fetching.EttuFetchingSetup;
-import UserState.UserState;
-import UserState.UserStateManager;
+import UserStateManagement.UserStateManager;
 import org.telegram.telegrambots.ApiContextInitializer;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.TelegramBotsApi;
@@ -41,9 +40,8 @@ public class BotCore extends TelegramLongPollingBot {
     public void onUpdateReceived(Update e) {
         Message msg = e.getMessage();
         String txt = msg.getText();
-        UserState user = userStates.findUserState(msg.getChatId());
         try {
-            sendMsg(msg, BotLogic.processCommand(txt, user));
+            sendMsg(msg, BotLogic.processCommand(txt, msg.getChatId()));
         } catch (Exception ex) {
             ex.printStackTrace();
         }

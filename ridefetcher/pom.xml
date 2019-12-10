@@ -34,6 +34,21 @@
             <version>1.1.1</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/org.jodd/jodd-json -->
+        <dependency>
+            <groupId>org.jodd</groupId>
+            <artifactId>jodd-json</artifactId>
+            <version>5.0.13</version>
+        </dependency>
+
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+            <version>3.1.0</version>
+            <type>jar</type>
+            <scope>compile</scope>
+        </dependency>
+
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-stdlib</artifactId>
@@ -56,13 +71,6 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.12</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
         </dependency>
 
         <dependency>
@@ -71,6 +79,6 @@
             <version>RELEASE</version>
             <scope>compile</scope>
         </dependency>
-    </dependencies>
 
+    </dependencies>
 </project>
