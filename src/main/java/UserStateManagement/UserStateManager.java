@@ -29,8 +29,6 @@ public class UserStateManager {
         return new Jedis(redisURI);
     }
 
-    //private static Map<Long, String> memory = new HashMap<Long, String>();
-
     private static void registerNewUser(Long userId) {
         jedis.set(String.valueOf(userId), new UserState().serialize());
     }
