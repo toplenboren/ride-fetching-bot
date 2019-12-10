@@ -33,7 +33,7 @@ public class BotCore extends TelegramLongPollingBot {
 
     @Override
     public String getBotUsername() {
-        return LocalSettings.botName;
+        return System.getenv("BOT_NAME");
     }
 
     @Override
@@ -49,7 +49,7 @@ public class BotCore extends TelegramLongPollingBot {
 
     @Override
     public String getBotToken() {
-        return LocalSettings.botToken;
+        return  System.getenv("BOT_TOKEN");
     }
 
     private void sendMsg(Message msg, String text) {
