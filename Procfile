@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS -cp target/classes/Bot/* BotCore
+web: java $JAVA_OPTS -cp target/classes/Bot/ BotCore
