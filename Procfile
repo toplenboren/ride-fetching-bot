@@ -1,1 +1,1 @@
-web: java -Dserver.port=$PORT -cp target/classes/:target/dependency/* Bot.BotCore
+java -Dserver.port=$PORT -cp target/classes/:target/dependency/* Bot.BotCore
