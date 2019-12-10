@@ -1,1 +1,1 @@
-web: java $JAVA_OPTS -cp target/classes/Bot/BotCore:target/dependency/*
+web: java $JAVA_OPTS -cp target/classes/Bot/* BotCore
