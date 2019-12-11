@@ -9,7 +9,13 @@ import org.telegram.telegrambots.meta.TelegramBotsApi;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardButton;
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class BotCore extends TelegramLongPollingBot {
 
@@ -42,8 +48,23 @@ public class BotCore extends TelegramLongPollingBot {
         Message msg = e.getMessage();
         String txt = msg.getText();
         UserState user = userStates.findUserState(msg.getChatId());
+        SendMessage message = new SendMessage() // Create a message object object
+                .setChatId(msg.getChatId()).setText("");
+        ReplyKeyboardMarkup keyboardMarkup = new ReplyKeyboardMarkup();
+        List<KeyboardRow> keyboard = new ArrayList<>();
+        KeyboardRow row = new KeyboardRow();
+        row.add("/fetch");
+        row.add("/demo");
+        row.add("/setup");
+        row.add("/help");
+        keyboard.add(row);
+        keyboardMarkup.setResizeKeyboard(true);
+        keyboardMarkup.setKeyboard(keyboard);
+        message.setReplyMarkup(keyboardMarkup);
         try {
-            sendMsg(msg, BotLogic.processCommand(txt, user));
+            execute(message.setChatId(msg.getChatId()).setText(BotLogic.processCommand(txt, user)));
+        } catch (TelegramApiException ec) {
+            ec.printStackTrace();
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -54,14 +75,4 @@ public class BotCore extends TelegramLongPollingBot {
         return LocalSettings.botToken;
     }
 
-    private void sendMsg(Message msg, String text) {
-        SendMessage s = new SendMessage();
-        s.setChatId(msg.getChatId());
-        s.setText(text);
-        try {
-            execute(s);
-        } catch (TelegramApiException e) {
-            e.printStackTrace();
-        }
-    }
 }

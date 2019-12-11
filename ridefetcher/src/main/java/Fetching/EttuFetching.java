@@ -58,10 +58,10 @@ public class EttuFetching {
     public static String getTramString(Map<String, String> response) {
         StringBuilder responseString = new StringBuilder();
         if (response.size() == 1) {
-            if (response.get("Error").equals("Connection")) {
-                responseString.append("Мы не можем подключиться к сайту трамвайно-троллейбусного управления :(");
-                return responseString.toString();
-            }
+//            if (response.get("Error").equals("Connection")) {
+//                responseString.append("Мы не можем подключиться к сайту трамвайно-троллейбусного управления :(");
+//                return responseString.toString();
+//            }
             responseString.append("Твой трамвай приедет не раньше, чем через ").append(response.get("last")).append(" минут.");
         } else if (response.size() > 1) {
             response.remove("last");
