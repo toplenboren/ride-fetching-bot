@@ -11,7 +11,14 @@ import java.util.stream.Collectors;
 public class EttuFetchingSetup {
 
     private static JSONObject tramStationsArray;
-
+    static {
+        try {
+            JSONParser parser = new JSONParser();
+            tramStationsArray = (JSONObject) parser.parse(new FileReader("src/main/resources/ettuTrams.json"));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     public EttuFetchingSetup() {
         try {
             JSONParser parser = new JSONParser();
