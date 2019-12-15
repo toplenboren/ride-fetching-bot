@@ -9,9 +9,7 @@ import java.net.URISyntaxException;
 
 public class UserStateManager {
 
-    private JsonParser jsonParser = new JsonParser();
     private static Jedis jedis;
-
     {
         try {
             jedis = getConnection();

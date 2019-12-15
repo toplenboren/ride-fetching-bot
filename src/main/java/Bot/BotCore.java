@@ -17,10 +17,12 @@ public class BotCore extends TelegramLongPollingBot {
 
     public static void main(String[] args) {
 
-// Production env
-//        System.getProperties().put("proxySet", "true");
-//        System.getProperties().put("socksProxyHost", "127.0.0.1");
-//        System.getProperties().put("socksProxyPort", "9150");
+    // System.getenv returns string
+    if(System.getenv("DEBUG").equals("True")) {
+        System.getProperties().put("proxySet", "true");
+        System.getProperties().put("socksProxyHost", "127.0.0.1");
+        System.getProperties().put("socksProxyPort", "9150");
+    }
 
         ApiContextInitializer.init();
 
