@@ -1,8 +1,7 @@
 package Bot;
 
 import Fetching.EttuFetchingSetup;
-import UserState.UserState;
-import UserState.UserStateManager;
+import UserStateManagement.UserStateManager;
 import org.telegram.telegrambots.ApiContextInitializer;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.TelegramBotsApi;
@@ -18,9 +17,12 @@ public class BotCore extends TelegramLongPollingBot {
 
     public static void main(String[] args) {
 
+    // System.getenv returns string
+    if(System.getenv("DEBUG").equals("True")) {
         System.getProperties().put("proxySet", "true");
         System.getProperties().put("socksProxyHost", "127.0.0.1");
         System.getProperties().put("socksProxyPort", "9150");
+    }
 
         ApiContextInitializer.init();
 
@@ -34,16 +36,15 @@ public class BotCore extends TelegramLongPollingBot {
 
     @Override
     public String getBotUsername() {
-        return LocalSettings.botName;
+        return System.getenv("BOT_NAME");
     }
 
     @Override
     public void onUpdateReceived(Update e) {
         Message msg = e.getMessage();
         String txt = msg.getText();
-        UserState user = userStates.findUserState(msg.getChatId());
         try {
-            sendMsg(msg, BotLogic.processCommand(txt, user));
+            sendMsg(msg, BotLogic.processCommand(txt, msg.getChatId()));
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -51,7 +52,7 @@ public class BotCore extends TelegramLongPollingBot {
 
     @Override
     public String getBotToken() {
-        return LocalSettings.botToken;
+        return  System.getenv("BOT_TOKEN");
     }
 
     private void sendMsg(Message msg, String text) {

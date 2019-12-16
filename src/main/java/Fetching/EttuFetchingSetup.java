@@ -26,10 +26,12 @@ public class EttuFetchingSetup {
         return tramStationsArray.containsKey(address);
     }
 
-    public static Set getAllAddresses(String filterString) {
-        Set<String> filteredSet = (Set<String>) tramStationsArray.keySet()
+    public static Set<? extends String> getAllAddressesByFilter(String filterString) {
+        Set<String> filteredSet = (Set<String>) tramStationsArray
+                .keySet()
                 .stream()
-                .filter(s -> ((String) s).startsWith(filterString))
+                .filter(s -> ((String) s).toLowerCase()
+                                         .startsWith(filterString.toLowerCase()))
                 .collect(Collectors.toSet());
         return filteredSet;
     }
