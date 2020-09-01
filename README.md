@@ -1,5 +1,5 @@
-# mm-oop-task
+# Ride-fetching-bot
 
-Wiki: https://github.com/toplenboren/mm-oop-task/wiki
+https://github.com/toplenboren/ride-fetching-bot/wiki
 
 Bot: @rideFetchBot
